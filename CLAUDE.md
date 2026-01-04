@@ -49,7 +49,7 @@ python src/validate.py
 ## Project Structure
 ```
 /assets           - media, static files, research notes
-/src              - Python scripts (extract, transform, validate)
+/src              - Python scripts, notebooks (extract, transform, validate)
 /data/raw         - Raw FastF1 exports
 /data/processed   - Tableau-ready CSVs
 /data/cache       - FastF1 cache directory
