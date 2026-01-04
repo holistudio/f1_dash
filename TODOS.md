@@ -11,13 +11,17 @@
 - [x] Get list of drivers with `session.laps['Driver'].unique()`
 
 ### 2. Compute cumulative race time for each driver
-- [ ] Convert `LapTime` from Timedelta to float seconds using `.dt.total_seconds()`
+- [x] Convert `LapTime` from Timedelta to float seconds using `.dt.total_seconds()`
 - [x] Check for NaT values in `LapTime`
-- [ ] Group by `Driver` and compute cumulative sum of lap time seconds
-- [ ] Store result in new column `calc_cumulative_time_sec`
-- [ ] Verify: cumulative time should increase monotonically per driver
+- [x] Group by `Driver` and compute cumulative sum of lap time seconds
+- [x] Store result in new column `cumulative_lap_time`
+- [x] Verify: cumulative time should increase monotonically per driver
+- [x] Handle NaT values in `LapTime` (decide: drop, fill with 0, or interpolate)
+- [x] Drop since dashboard is for pit stop loss relative to appropriate pairs of analysis and reference drivers. Invalid LapTime should not get visualized in the first place.
+
+#### Revisit later
 - [ ] Automatically verify clean data in `validate.py` file.
-- [ ] Handle NaT values in `LapTime` (decide: drop, fill with 0, or interpolate)
+- [ ] Warnings should go to stderr
 
 ### 3. Create in-lap and out-lap flags
 - [ ] Create `is_inlap` column: `pd.notna(laps['PitInTime'])`
