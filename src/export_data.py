@@ -18,6 +18,10 @@ print(f'Number of rows: {len(laps)}')
 
 # Get list of drivers
 drivers = laps['Driver'].unique()
-print(f'Drivers: {drivers}')
+print(f'Drivers: {drivers}\n')
 
-
+if laps['LapTime'].isna().any():
+    n_nat = laps['LapTime'].isna().sum()
+    print(f'Number of NaT Lap Times:{n_nat}')
+else:
+    print('All Lap Times OK')
