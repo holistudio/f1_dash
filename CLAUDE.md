@@ -3,6 +3,11 @@
 ## Project Overview
 Python data pipeline + Tableau dashboard for post-race pit stop analysis. Computes time lost to pit stops and recovery rates against a reference driver.
 
+## Key Constraints and Limitations
+
+- Do NOT: Provide code changes beyond what I ask for. This is a learn-to-code project.
+- Always assist in my learning by writing code comments explaining the code lines you write.
+
 ## Environment
 - Windows 10 with WSL (Ubuntu)
 - Project lives on Windows filesystem, accessed via WSL at `/mnt/c/`
