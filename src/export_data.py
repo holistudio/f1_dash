@@ -32,9 +32,18 @@ else:
     column_dtypes = laps['LapTime'].dtypes
     print(f'dtypes: {column_dtypes}\n')
 
-# Group by `Driver` and compute cumulative sum of lap time seconds
-laps['cumulative_lap_time'] = laps.groupby('Driver')['LapTime'].cumsum()
+# Drop rows with NaT LapTimes
+valid_laps = laps[laps['LapTime'].notna()]
 
-is_monotonic_inc = laps.groupby('Driver')['cumulative_lap_time'].diff().ge(0).all()
+# Group by `Driver` and compute cumulative sum of lap time seconds
+valid_laps['CumulativeLapTime'] = valid_laps.groupby('Driver')['LapTime'].cumsum()
+
+# Check cumulative time should increase monotonically per driver
+is_monotonic_inc = valid_laps.groupby('Driver')['CumulativeLapTime'].diff().dropna().ge(0).all()
+
 if is_monotonic_inc:
     print('All Driver Cumulative Lap Times Monotonically Increasing')
+else:
+    print('Non-increasing Cumulative Lap Times')
+    filter = valid_laps.groupby('Driver')['CumulativeLapTime'].diff().dropna().ge(0) != True
+    print(valid_laps[filter][['Driver','LapNumber','LapTime','CumulativeLapTime']])
