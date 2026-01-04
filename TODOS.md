@@ -3,12 +3,12 @@
 ## Part A: Data Preparation
 
 ### 1. Load a single race session using FastF1
-- [ ] Import fastf1 and enable cache (`fastf1.Cache.enable_cache('data/cache')`)
-- [ ] Use `fastf1.get_session(year, race_name, 'R')` to get a race session
-- [ ] Call `session.load()` to fetch timing data
-- [ ] Access lap data via `session.laps`
-- [ ] Inspect columns with `session.laps.columns` and row count with `len(session.laps)`
-- [ ] Get list of drivers with `session.laps['Driver'].unique()`
+- [x] Import fastf1 and enable cache (`fastf1.Cache.enable_cache('data/cache')`)
+- [x] Use `fastf1.get_session(year, race_name, 'R')` to get a race session
+- [x] Call `session.load()` to fetch timing data
+- [x] Access lap data via `session.laps`
+- [x] Inspect columns with `session.laps.columns` and row count with `len(session.laps)`
+- [x] Get list of drivers with `session.laps['Driver'].unique()`
 
 ### 2. Compute cumulative race time for each driver
 - [ ] Convert `LapTime` from Timedelta to float seconds using `.dt.total_seconds()`
