@@ -12,10 +12,12 @@
 
 ### 2. Compute cumulative race time for each driver
 - [ ] Convert `LapTime` from Timedelta to float seconds using `.dt.total_seconds()`
-- [ ] Handle NaT values in `LapTime` (decide: drop, fill with 0, or interpolate)
+- [x] Check for NaT values in `LapTime`
 - [ ] Group by `Driver` and compute cumulative sum of lap time seconds
 - [ ] Store result in new column `calc_cumulative_time_sec`
 - [ ] Verify: cumulative time should increase monotonically per driver
+- [ ] Automatically verify clean data in `validate.py` file.
+- [ ] Handle NaT values in `LapTime` (decide: drop, fill with 0, or interpolate)
 
 ### 3. Create in-lap and out-lap flags
 - [ ] Create `is_inlap` column: `pd.notna(laps['PitInTime'])`
