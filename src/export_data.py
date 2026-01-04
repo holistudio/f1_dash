@@ -28,5 +28,13 @@ if laps['LapTime'].isna().any():
     n_nat = laps['LapTime'].isna().sum()
     print(f'Number of NaT Lap Times:{n_nat}')
 else:
-    print('All Lap Times OK')
+    print('All Lap Times non-NaT')
+    column_dtypes = laps['LapTime'].dtypes
+    print(f'dtypes: {column_dtypes}\n')
 
+# Group by `Driver` and compute cumulative sum of lap time seconds
+laps['cumulative_lap_time'] = laps.groupby('Driver')['LapTime'].cumsum()
+
+is_monotonic_inc = laps.groupby('Driver')['cumulative_lap_time'].diff().ge(0).all()
+if is_monotonic_inc:
+    print('All Driver Cumulative Lap Times Monotonically Increasing')
