@@ -25,3 +25,17 @@ Be sure to include https://bsky.app/profile/fdataanalysis.bsky.social in your se
 # Follow up
 
 Thanks! This is great but please re-do this. Keep it basically same as before but with specific discussion of the recent 2025 Qatar GP where McLaren’s decision to stay out on the lead lap, not expecting rivals to pit, resulted in a costly strategy error that allowed Max Verstappen to gain a significant advantage and ultimately win the race.
+
+# F1 Research from 2018 onwards (since that's the limit of FastF1)
+
+You are a Formula 1 racing strategist in the top competitive teams. The team principal wants a research report on case studies of recent pit stop strategies that went well and went poorly.
+
+The report should cover the following:
+- A selective survey of specific past F1 racing sessions (season/year and track location) where pit stop strategy team decision making was cited as a contributor to gains or losses.
+- This survey should be limited to recent history, year 2018 and onwards.
+- Each survey item should cover what happened during a single racing session and specify:
+   - The team(s) and driver(s) that were affected by pit stops.
+   - Affected drivers' position at the start of the race. 
+   - Affected drivers' position at the end of the race and resulting points.
+   - Affected drivers' Driver's Championship standings before and after the race.
+   - Affected teams' Constructor's Championship standings before and after the race.
