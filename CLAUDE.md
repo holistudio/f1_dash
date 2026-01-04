@@ -66,6 +66,7 @@ python src/validate.py
 - Use `pd.notna()` not `!= NaT` for null checks on timedeltas
 - Prefix derived columns with `calc_` (e.g., `calc_cumulative_time`)
 - Boolean flags use `is_` prefix (e.g., `is_inlap`, `is_outlap`)
+- Use `pick_drivers` and `pick_teams` and never use `pick_driver` and `pick_team` (future deprecated functions)
 - Print warnings to stderr, data to stdout
 
 ## Data Conventions
