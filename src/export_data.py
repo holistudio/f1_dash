@@ -137,5 +137,53 @@ def main():
     valid_laps['is_retired'] = valid_laps['Driver'].map(is_retired)
     valid_laps['is_lapped'] = valid_laps['Driver'].map(is_lapped)
 
+    # Export to CSV with all necessary columns
+    # Convert remaining Timedelta columns to float seconds
+    # Note: LapTime is already converted to seconds earlier
+    cols_to_convert = ['Sector1Time', 'Sector2Time', 'Sector3Time', 'Time', 'PitInTime', 'PitOutTime']
+    for col in cols_to_convert:
+        if col in valid_laps.columns and pd.api.types.is_timedelta64_dtype(valid_laps[col]):
+            valid_laps[col] = valid_laps[col].dt.total_seconds()
+
+    # Rename columns to match Tableau requirements (calc_ prefix)
+    valid_laps.rename(columns={
+        'LapTime': 'calc_lap_time_sec',
+        'cumulative_lap_time': 'calc_cumulative_time_sec'
+    }, inplace=True)
+
+    # Select final column set
+    final_columns = [
+        'Driver', 'LapNumber', 'calc_lap_time_sec', 'calc_cumulative_time_sec',
+        'Stint', 'Compound', 'TyreLife', 'Position', 'Team',
+        'Sector1Time', 'Sector2Time', 'Sector3Time',
+        'is_inlap', 'is_outlap', 'is_pit_lap', 'pit_stop_number',
+        'is_retired', 'is_lapped'
+    ]
+    
+    # Filter to available columns only
+    export_df = valid_laps[[c for c in final_columns if c in valid_laps.columns]].copy()
+
+    # Verify no Timedelta dtypes remain
+    if not export_df.select_dtypes(include=['timedelta64']).empty:
+        logging.warning(f"Timedelta columns remaining: {export_df.select_dtypes(include=['timedelta64']).columns.tolist()}")
+
+    # Check for duplicate (Driver, LapNumber) pairs
+    if export_df.duplicated(subset=['Driver', 'LapNumber']).any():
+        logging.warning("Duplicate (Driver, LapNumber) pairs found")
+
+    # Export to CSV
+    output_dir = os.path.join(script_dir, '../data/processed')
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, 'laps_final.csv')
+    export_df.to_csv(output_path, index=False)
+    logging.info(f"Data exported to {output_path}")
+
+    # Verify CSV is readable
+    try:
+        pd.read_csv(output_path)
+        logging.info("CSV verification successful: File is readable")
+    except Exception as e:
+        logging.error(f"CSV verification failed: {e}")
+
 if __name__ == '__main__':
     main()
