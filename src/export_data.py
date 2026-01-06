@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 import fastf1
+import pandas as pd
 
 # Configure cache relative to this script to ensure it works from any CWD
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -87,6 +88,28 @@ def main():
         diffs = valid_laps.groupby('Driver')['cumulative_lap_time'].diff()
         non_monotonic_mask = diffs < 0
         logging.warning(f"Details:\n{valid_laps[non_monotonic_mask][['Driver', 'LapNumber', 'LapTime', 'cumulative_lap_time']]}")
+
+    # Create in-lap and out-lap flags
+    valid_laps['is_inlap'] = valid_laps['PitInTime'].notna()
+    valid_laps['is_outlap'] = valid_laps['PitOutTime'].notna()
+    valid_laps['is_pit_lap'] = valid_laps['is_inlap'] | valid_laps['is_outlap']
+
+    # Compute pit_stop_number
+    valid_laps['pit_stop_number'] = valid_laps.groupby('Driver')['is_inlap'].cumsum().astype(int)
+
+    # Verify: Stint should increment by 1 after each is_inlap == True
+    # We compare current Stint with next lap's Stint for in-laps
+    valid_laps['next_stint'] = valid_laps.groupby('Driver')['Stint'].shift(-1)
+    in_laps_check = valid_laps[valid_laps['is_inlap'] & valid_laps['next_stint'].notna()]
+    mismatches = in_laps_check[in_laps_check['next_stint'] != in_laps_check['Stint'] + 1]
+
+    if not mismatches.empty:
+        logging.warning(f"Stint consistency check failed for {len(mismatches)} laps.")
+        logging.warning(f"Details:\n{mismatches[['Driver', 'LapNumber', 'Stint', 'next_stint']]}")
+    else:
+        logging.info("Stint consistency verified: Stint increments after each in-lap.")
+
+    valid_laps.drop(columns=['next_stint'], inplace=True)
 
 if __name__ == '__main__':
     main()
