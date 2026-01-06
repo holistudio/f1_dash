@@ -1,5 +1,6 @@
 import os
 import sys
+import argparse
 import logging
 import fastf1
 import pandas as pd
@@ -18,8 +19,8 @@ class MaxLevelFilter(logging.Filter):
     def filter(self, record):
         return record.levelno <= self.max_level
 
-def setup_logging():
-    """Configures logging to send INFO to stdout and WARNING/ERROR to stderr."""
+def setup_logging(log_file_path):
+    """Configures logging to send INFO to stdout, WARNING/ERROR to stderr, and all to file."""
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
@@ -36,14 +37,35 @@ def setup_logging():
     stderr_handler.setLevel(logging.WARNING)
     stderr_handler.setFormatter(formatter)
 
+    # File Handler
+    file_handler = logging.FileHandler(log_file_path, mode='w')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+
     logger.addHandler(stdout_handler)
     logger.addHandler(stderr_handler)
+    logger.addHandler(file_handler)
 
 def main():
-    setup_logging()
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Export F1 race data.')
+    parser.add_argument('--year', type=int, default=2019, help='Race year (default: 2019)')
+    parser.add_argument('--gp', type=str, default='Hungary', help='Grand Prix name (default: Hungary)')
+    args = parser.parse_args()
+
+    # Create filename prefix
+    safe_gp = args.gp.replace(' ', '_')
+    file_prefix = f"{args.year}_{safe_gp}"
+
+    # Ensure output directory exists
+    output_dir = os.path.join(script_dir, '../data/processed')
+    os.makedirs(output_dir, exist_ok=True)
+
+    log_file = os.path.join(output_dir, f'{file_prefix}_data_processing.log')
+    setup_logging(log_file)
 
     # Load race session
-    session = fastf1.get_session(year=2019, gp='Hungary', identifier='R')
+    session = fastf1.get_session(year=args.year, gp=args.gp, identifier='R')
     session.load()
 
     # Access Laps DataFrame
@@ -172,9 +194,7 @@ def main():
         logging.warning("Duplicate (Driver, LapNumber) pairs found")
 
     # Export to CSV
-    output_dir = os.path.join(script_dir, '../data/processed')
-    os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, 'laps_final.csv')
+    output_path = os.path.join(output_dir, f'{file_prefix}_laps_final.csv')
     export_df.to_csv(output_path, index=False)
     logging.info(f"Data exported to {output_path}")
 
