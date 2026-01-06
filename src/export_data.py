@@ -111,5 +111,31 @@ def main():
 
     valid_laps.drop(columns=['next_stint'], inplace=True)
 
+    # Retirement/lapping detection check
+    # Find race winner's max LapNumber
+    winner_max_lap = valid_laps['LapNumber'].max()
+
+    # Calculate max lap per driver
+    driver_max_laps = valid_laps.groupby('Driver')['LapNumber'].max()
+
+    # Identify retired and lapped drivers
+    # Logic: Retired if completed fewer than (winner_laps - 1)
+    #        Lapped if completed fewer than winner_laps but not retired
+    is_retired = driver_max_laps < (winner_max_lap - 1)
+    is_lapped = (driver_max_laps < winner_max_lap) & (~is_retired)
+
+    # Log warnings for retired and lapped drivers
+    for driver in driver_max_laps.index:
+        if is_retired[driver]:
+            logging.warning(f"Driver {driver} retired. Last lap: {driver_max_laps[driver]}")
+        elif is_lapped[driver]:
+            deficit = winner_max_lap - driver_max_laps[driver]
+            logging.warning(f"Driver {driver} was lapped. Deficit: {deficit} lap(s)")
+
+    # Add flags to the main DataFrame
+    # Map the boolean Series back to the Driver column
+    valid_laps['is_retired'] = valid_laps['Driver'].map(is_retired)
+    valid_laps['is_lapped'] = valid_laps['Driver'].map(is_lapped)
+
 if __name__ == '__main__':
     main()
