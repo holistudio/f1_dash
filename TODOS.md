@@ -77,23 +77,28 @@
 - [x] Add annotations or labels for pit stop numbers
 - [x] Format axis: Y-axis label "Gap (seconds)", reference line at 0
 
+- [x] Show every Lap Number not every other Lap Number
+
 ### 4. Construct Plot Two: Lap Time Comparison
-- [ ] Create new worksheet "Lap Time Comparison"
-- [ ] Drag `LapNumber` to Columns (continuous)
-- [ ] Drag `calc_lap_time_sec` to Rows
-- [ ] Drag `Driver` to Color
-- [ ] Filter to show only `[Analysis Driver]` and `[Reference Driver]`
-- [ ] Add filter: exclude `is_pit_lap = True`
-- [ ] Set mark type to Line (or Line + Circle)
+- [x] Create new worksheet "Lap Time Comparison"
+- [x] Drag `LapNumber` to Columns (continuous)
+- [x] Drag `calc_lap_time_sec` to Rows
+- [x] Drag `Driver` to Color
+- [x] Filter to show only `[Analysis Driver]` and `[Reference Driver]`
+- [x] Add filter: exclude `is_pit_lap = True`
+- [x] Set mark type to Line (or Line + Circle)
 - [ ] Add `Compound` to shape or color detail for tire visibility
-- [ ] Format Y-axis to appropriate scale (likely 60-120 seconds range)
-- [ ] Add tooltip: Lap, Time, Compound, TyreLife, Position
+- [x] Format Y-axis to appropriate scale (likely 60-120 seconds range)
+- [x] Add tooltip: Lap, Time, Compound, TyreLife, Position
+- [x] Show every Lap Number not every other Lap Number
 
 ### 5. Add interactivity so both plots update when driver selections change
-- [ ] Show both parameter controls on dashboard
-- [ ] Verify Plot One updates when either parameter changes
-- [ ] Verify Plot Two filters update when parameters change
-- [ ] Add action: hover on Plot One highlights corresponding lap in Plot Two
-- [ ] Test edge case: select a retired driver (should show partial data)
-- [ ] Test edge case: select same driver for both parameters (should show flat zero line)
-- [ ] Add warning text field that displays if selected driver is retired/lapped
+- [x] Show both parameter controls on dashboard
+- [x] Verify Plot One updates when either parameter changes
+- [x] Verify Plot Two filters update when parameters change
+- [x] Add action: hover on Plot One highlights corresponding lap in Plot Two
+- [x] Test edge case: select a retired driver (should show partial data)
+- [x] Test edge case: select same driver for both parameters (should show flat zero line)
+- [x] Add warning text field that displays if selected driver is retired/lapped
+- [x] Move "Lap Number" to bottom of the chart
+- [ ] Visual style/color palette matching F1 dashboards
