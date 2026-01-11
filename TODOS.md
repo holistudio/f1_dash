@@ -51,29 +51,31 @@
 
 ## Part B: Tableau Build
 
+- [x] Add `Driver Status` field that categorizes each driver as "Full Race", "Retired", or "Lapped"
+
 ### 1. Create driver selection parameters
-- [ ] Create Parameter: `Analysis Driver` (String, list of all drivers from data)
-- [ ] Create Parameter: `Reference Driver` (String, list of all drivers from data)
-- [ ] Set default values (e.g., race winner as reference, P2 as analysis driver)
+- [x] Create Parameter: `Analysis Driver` (String, list of all drivers from data)
+- [x] Create Parameter: `Reference Driver` (String, list of all drivers from data)
+- [x] Set default values (e.g., race winner as reference, P2 as analysis driver)
 
 ### 2. Build a calculated field for gap-to-reference using LOD expressions
-- [ ] Create calculated field `Reference Cumulative Time`:
+- [x] Create calculated field `Reference Cumulative Time`:
       `{ FIXED [LapNumber]: MAX(IF [Driver] = [Reference Driver] THEN [calc_cumulative_time_sec] END) }`
-- [ ] Create calculated field `Gap to Reference`:
+- [x] Create calculated field `Gap to Reference`:
       `IF [Driver] = [Analysis Driver] THEN [calc_cumulative_time_sec] - [Reference Cumulative Time] END`
-- [ ] Verify: positive values = analysis driver behind, negative = ahead
+- [x] Verify: positive values = analysis driver behind, negative = ahead
 
 ### 3. Construct Plot One: Gap-to-Reference Evolution
-- [ ] Create new worksheet "Gap Evolution"
-- [ ] Drag `LapNumber` to Columns (continuous)
-- [ ] Drag `Gap to Reference` to Rows
-- [ ] Filter to `[Driver] = [Analysis Driver]`
-- [ ] Set mark type to Line
-- [ ] Add secondary axis or layer for pit stop markers
-- [ ] Mark points where `is_pit_lap = True` for analysis driver (distinct shape/color)
-- [ ] Mark points where reference driver pitted (use LOD to find those laps)
-- [ ] Add annotations or labels for pit stop numbers
-- [ ] Format axis: Y-axis label "Gap (seconds)", reference line at 0
+- [x] Create new worksheet "Gap Evolution"
+- [x] Drag `LapNumber` to Columns (continuous)
+- [x] Drag `Gap to Reference` to Rows
+- [x] Filter to `[Driver] = [Analysis Driver]`
+- [x] Set mark type to Line
+- [x] Add secondary axis or layer for pit stop markers
+- [x] Mark points where `is_pit_lap = True` for analysis driver (distinct shape/color)
+- [x] Mark points where reference driver pitted (use LOD to find those laps)
+- [x] Add annotations or labels for pit stop numbers
+- [x] Format axis: Y-axis label "Gap (seconds)", reference line at 0
 
 ### 4. Construct Plot Two: Lap Time Comparison
 - [ ] Create new worksheet "Lap Time Comparison"
