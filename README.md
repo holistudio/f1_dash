@@ -26,7 +26,7 @@ The dashboard is configured to compare gaps between and lap times of two drivers
 
 A demo of this dashboard looks at Lewis Hamilton's victory of Max Verstappen in the 2019 Hungarian Grand Prix.
 
-Hamilton starts the race at P3 behind Verstappen in P1 and gets to P2 by the end of Lap 1. At Lap 25, Verstappen undercuts with an early pit stop and regains P1 during Hamilton's pit stop.
+Hamilton (HAM) starts the race at P3 behind Verstappen (VER) in P1 and gets to P2 by the end of Lap 1. At Lap 25, Verstappen undercuts with an early pit stop and regains P1 during Hamilton's pit stop.
 
 <img src="assets/01_lap25.png">
 
@@ -35,8 +35,10 @@ At Lap 48, Hamilton makes another pit stop. Hamilton's team had not planned for 
 
 <img src="assets/02_lap48.png">
 
-By Lap 66, Hamilton had closed the gap, forcing Verstappen to stay out on hard tires.
+After switching to medium tires, Hamilton consistently achieved faster lap times than Verstappen. By Lap 66, Hamilton had closed the gap, forcing Verstappen to stay out on hard tires. Verstappen decides to pit in Lap 67*, giving Hamilton the lead. Hamilton finishes Lap 70 in P1 pole position.
 
-Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap with Charles LeClerc behind him, resulting in no loss in racing position.
+Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap with rival driver Charles LeClerc behind him, resulting in no loss in racing position. This can be seen when switching the reference driver from VER to LEC.
 
 <img src="assets/03_lap48_lec.png">
+
+\* Verstappen switched to soft tires and achieved the fastest lap times to earn a bonus championship point.
