@@ -18,9 +18,9 @@ The dashboard is configured to compare gaps between and lap times of two drivers
 
 | Step |  Menu |
 |:------|----:|
-| 1. The user selects analysis and reference driver on the dropdown menus on the top right. Both plots will update to show the corresponding driver delta, lap times, and tire compounds.|  <img src="assets/1_menu.png" width="300 px"> |
-| 2. The user can also zoom in/out by specifying the min and max lap numbers  |  <img src="assets/2_lap.png" width="300 px"> |  
-| 3. A warning will be displayed if any issues were encountered during the racing session that may cause misleading values in the data (e.g., driver retired early or analysis driver lapped reference driver)  |  <img src="assets/3_driver_warning.png" width="300 px"> |  
+| 1. The user selects analysis and reference driver on the dropdown menus on the top right. Both plots will update to show the corresponding driver delta, lap times, and tire compounds.|  <img src="assets/1_menu.png" width="400 px"> |
+| 2. The user can also zoom in/out by specifying the min and max lap numbers  |  <img src="assets/2_lap.png" width="400 px"> |  
+| 3. A warning will be displayed if any issues were encountered during the racing session that may cause misleading values in the data (e.g., driver retired early or analysis driver lapped reference driver)  |  <img src="assets/3_driver_warning.png" width="400 px"> |  
 
 ## Case Study
 
