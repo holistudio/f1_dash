@@ -8,7 +8,7 @@ Interactive dashboard online at: https://public.tableau.com/app/profile/daniel.l
 
 ## Data Visualizations
 
-The dashboard is configured to compare gaps between and lap times of two drivers, analysis driver and reference driver.
+The dashboard is configured for a user to look at pit stop strategy after a racing session is complete, looking at plots that compare gaps between and lap times of two drivers, analysis driver and reference driver.
 
 - **Analysis Driver-to-Reference Gap Evolution**: Plot shows gap between drivers at the end of each lap. Negative gap means analysis driver is ahead of reference driver.
 - **Analysis vs Reference Driver Lap Times**: Plot shows lap times for each driver.
@@ -31,14 +31,12 @@ Hamilton (HAM) starts the race at P3 behind Verstappen (VER) in P1 and gets to P
 <img src="assets/01_lap25.png">
 
 
-At Lap 48, Hamilton makes another pit stop. Hamilton's team had not planned for two pit stops before the race but decided that a switch back to medium tires would help close the gap.
+At Lap 48, Hamilton makes another pit stop. Hamilton's team had not planned for two pit stops before the race but [decided](https://youtu.be/onWe3EeKBtc?si=aHlEG8lCghvojk8x&t=153) that a switch back to medium tires would help force Verstappen to stay out on hard tires and close the gap when Verstappen's tires' condition diminished.
 
 <img src="assets/02_lap48.png">
 
-After switching to medium tires, Hamilton consistently achieved faster lap times than Verstappen. By Lap 66, Hamilton had closed the gap, forcing Verstappen to stay out on hard tires. Verstappen decides to pit in Lap 67*, giving Hamilton the lead. Hamilton finishes Lap 70 in P1 pole position.
+After the second pit stop, Hamilton consistently achieved faster lap times than Verstappen. By Lap 67, Hamilton had closed the initial 20s gap and overtakes Verstappen to eventually finish the race in P1.
 
-Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap with rival driver Charles LeClerc behind him, resulting in no loss in racing position. This can be seen when switching the reference driver from VER to LEC.
+Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap ahead of rival driver Charles LeClerc (LEC) in P3, resulting in no loss in racing position. This can be seen when switching the reference driver from VER to LEC.
 
 <img src="assets/03_lap48_lec.png">
-
-\* Verstappen switched to soft tires and achieved the fastest lap times to earn a bonus championship point.
