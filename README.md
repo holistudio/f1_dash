@@ -25,19 +25,19 @@ The dashboard is configured for a user to look at pit stop strategy after a raci
 
 ## Case Study
 
-A demo of this dashboard looks at Lewis Hamilton's victory of Max Verstappen in the 2019 Hungarian Grand Prix.
+A demo of this dashboard looks at Lewis Hamilton's victory over Max Verstappen in the 2019 Hungarian Grand Prix.
 
 Hamilton (HAM) starts the race at P3 behind Verstappen (VER) in P1 and gets to P2 by the end of Lap 1. At Lap 25, Verstappen undercuts with an early pit stop and regains P1 during Hamilton's pit stop.
 
 <img src="assets/01_lap25.png">
 
 
-At Lap 48, Hamilton makes another pit stop. Hamilton's team had not planned for two pit stops before the race but [decided](https://youtu.be/onWe3EeKBtc?si=aHlEG8lCghvojk8x&t=153) that a switch back to medium tires would help force Verstappen to stay out on hard tires and close the gap when Verstappen's tires' condition diminished.
+In Lap 48, Hamilton makes another pit stop. Hamilton's team had not planned for two pit stops before the race but [decided](https://youtu.be/onWe3EeKBtc?si=aHlEG8lCghvojk8x&t=153) that a switch back to medium tires would help force Verstappen to stay out on hard tires and close the gap when Verstappen's tires' condition diminished.
 
 <img src="assets/02_lap48.png">
 
 After the second pit stop, Hamilton consistently achieved faster lap times than Verstappen. By Lap 67, Hamilton had closed the initial 20s gap and overtakes Verstappen to eventually finish the race in P1.
 
-Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap ahead of rival driver Charles LeClerc (LEC) in P3, resulting in no loss in racing position. This can be seen when switching the reference driver from VER to LEC.
+Hamilton's second pit stop was also considered a "free pit stop" due to his significant 40s gap ahead of rival driver Charles LeClerc (LEC) in P3, resulting in no loss in racing position. This can be seen in the interactive dashboard when switching the reference driver from VER to LEC.
 
 <img src="assets/03_lap48_lec.png">
